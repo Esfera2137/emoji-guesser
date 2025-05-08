@@ -1,18 +1,18 @@
 {
   "accountAssociation": {
-    "header": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaWQ6YOUR_FARCASTER_FIDIn0.YOUR_SIGNATURE",
-    "payload": "eyJkb21haW4iOiJlbW9qaS1ndWVzc2VyLXRocmVlLnZlcmNlbC5hcHAifQ",
-    "signature": "YOUR_SIGNATURE"
+    "header": "eyJmaWQiOjIwNDA3MywidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDhhZkVjMjM5ODE1YTVBMTdjNTI0NmM4RDM2NDUzNjQ2MzUyNjIwMUQifQ",
+    "payload": "eyJkb21haW4iOiJlbW9qaS1ndWVzc2VyLXlrZ3gudmVyY2VsLmFwcCJ9",
+    "signature": "MHg0MzFkMjliZDg3OTE0YTI1MDY1ZGYyZjc4ZGU5NzFmNDQ2NzU0YmU4ZjNhNDk2MTFkYTBjNTkxNTM3YTZiYjgxNDliZmUyM2VhYjFmNGYwNjdjN2NjMTY0OTI5ZTlhZjJlOTgzOGUzNDc2ZWE1MGE2MTZjYmViNmM4OTVhM2JlNzFj"
   },
   "frame": {
     "version": "1",
-    "name": "Emoji Guesser",
-    "iconUrl": "https://emoji-guesser-three.vercel.app/icon.png",
-    "homeUrl": "https://emoji-guesser-three.vercel.app",
-    "imageUrl": "https://emoji-guesser-three.vercel.app/frame-image.png",
-    "buttonTitle": "Zagraj!",
-    "splashImageUrl": "https://emoji-guesser-three.vercel.app/splash.png",
-    "splashBackgroundColor": "#f0f0f0",
-    "description": "Zgadnij ukryte emoji!"
+    "name": "Example Frame",
+    "iconUrl": "https://emoji-guesser-ykgx.vercel.app/icon.png",
+    "homeUrl": "https://emoji-guesser-ykgx.vercel.app",
+    "imageUrl": "https://emoji-guesser-ykgx.vercel.app/image.png",
+    "buttonTitle": "Check this out",
+    "splashImageUrl": "https://emoji-guesser-ykgx.vercel.app/splash.png",
+    "splashBackgroundColor": "#eeccff",
+    "webhookUrl": "https://emoji-guesser-ykgx.vercel.app/api/webhook"
   }
 }
