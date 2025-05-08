@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Guesser</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="fc:frame" content='{
+      "version": "next",
+      "image": "https://i.imgur.com/FzYPiQh.png",
+      "button": {
+        "title": "Zagraj!",
+        "action": {
+          "type": "launch_frame",
+          "url": "https://emoji-guesser-three.vercel.app/"
+        }
+      }
+    }' />
+</head>
+<body>
+    <div id="game-container">
+        <h1>Zgadnij Emoji!</h1>
+        <div id="emoji-display">❓</div>
+        <input type="text" id="guess-input" placeholder="Wpisz swoje przypuszczenie">
+        <button id="submit-guess">Sprawdź</button>
+        <div id="message"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
