@@ -1,0 +1,18 @@
+{
+  "accountAssociation": {
+    "header": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaWQ6YOUR_FARCASTER_FIDIn0.YOUR_SIGNATURE",
+    "payload": "eyJkb21haW4iOiJlbW9qaS1ndWVzc2VyLXRocmVlLnZlcmNlbC5hcHAifQ",
+    "signature": "YOUR_SIGNATURE"
+  },
+  "frame": {
+    "version": "1",
+    "name": "Emoji Guesser",
+    "iconUrl": "https://emoji-guesser-three.vercel.app/icon.png",
+    "homeUrl": "https://emoji-guesser-three.vercel.app",
+    "imageUrl": "https://emoji-guesser-three.vercel.app/frame-image.png",
+    "buttonTitle": "Zagraj!",
+    "splashImageUrl": "https://emoji-guesser-three.vercel.app/splash.png",
+    "splashBackgroundColor": "#f0f0f0",
+    "description": "Zgadnij ukryte emoji!"
+  }
+}
