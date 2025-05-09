@@ -3,10 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Frame</title>
-    <meta name="fc:frame" content='{"version":"next","image":"https://i.imgur.com/FzYPiQh.png","button":{"title":"Test","action":{"type":"launch_frame"}}}' />
+    <title>Emoji Guesser</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="fc:frame" content='{
+      "version": "next",
+      "image": "https://i.imgur.com/FzYPiQh.png",
+      "button": {
+        "title": "Zagraj!",
+        "action": {
+          "type": "launch_frame",
+          "url": "https://emoji-guesser-three.vercel.app/"
+        }
+      }
+    }' />
 </head>
 <body>
-    <h1>Testowy tekst</h1>
+    <div class="container">
+        <h1>Zgadnij Emoji!</h1>
+        <div id="emojis">❓</div>
+        <input type="text" id="answer" placeholder="Wpisz swoje przypuszczenie">
+        <button id="submit-guess">Sprawdź</button>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
