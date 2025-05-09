@@ -1,46 +1,43 @@
-// Baza danych z emotikonami i odpowiedziami
-// Uwaga: To nasza baza, którą możemy rozbudować
 const emojiChallenges = [
-    { emojis: "💰🔗", answer: "Bitcoin", explanation: "💰 symbolizes money, 🔗 a chain – it's Bitcoin." },
-    { emojis: "🌐🔒👥", answer: "Ethereum", explanation: "🌐 is a network, 🔒 security, 👥 community – it's Ethereum." },
-    { emojis: "🐕💸", answer: "Dogecoin", explanation: "🐕 is a dog, 💸 money – it's Dogecoin." },
-    { emojis: "👨‍🚀📈", answer: "Vitalik Buterin", explanation: "👨‍🚀 is an innovator, 📈 growth – it's Vitalik Buterin." },
-    { emojis: "🔄💻", answer: "DeFi", explanation: "🔄 symbolizes exchange, 💻 technology – it's DeFi." },
-    { emojis: "🖼️🔢", answer: "NFT", explanation: "🖼️ is an image, 🔢 uniqueness – it's NFT." }
-  ];
-  
-  // Zmienne
-  let currentChallenge = null;
-  
-  // Funkcja losująca wyzwanie
-  function loadChallenge() {
-    // Losowy indeks z bazy
-    const randomIndex = Math.floor(Math.random() * emojiChallenges.length);
-    currentChallenge = emojiChallenges[randomIndex];
-    document.getElementById("emojis").textContent = currentChallenge.emojis;
-    document.getElementById("answer").value = ""; // Wyczyść pole
-    document.getElementById("result").textContent = ""; // Wyczyść wynik
+  { emojis: "💰🔗", answer: "Bitcoin", explanation: "💰 money, 🔗 chain" },
+  { emojis: "🌐🔒", answer: "Ethereum", explanation: "🌐 network, 🔒 security" }
+  // ... reszta bazy
+];
+
+let currentChallenge = null;
+
+function loadChallenge() {
+  const randomIndex = Math.floor(Math.random() * emojiChallenges.length);
+  currentChallenge = emojiChallenges[randomIndex];
+  document.getElementById("emojis").textContent = currentChallenge.emojis;
+  document.getElementById("answer").value = "";
+  document.getElementById("result").textContent = "";
+}
+
+function checkAnswer() {
+  const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+  const correctAnswer = currentChallenge.answer.toLowerCase();
+
+  if (userAnswer === correctAnswer) {
+    document.getElementById("result").textContent = `Correct! ${currentChallenge.explanation}`;
+    document.querySelector('meta[name="fc:frame:image"]').setAttribute("content", "https://i.imgur.com/8WqYg5f.jpg");
+  } else {
+    document.getElementById("result").textContent = `Wrong! Try again. The answer was ${currentChallenge.answer}. ${currentChallenge.explanation}`;
+    document.querySelector('meta[name="fc:frame:image"]').setAttribute("content", "https://i.imgur.com/8WqYg5f.jpg");
   }
-  
-  // Sprawdzanie odpowiedzi po kliknięciu przycisku "Check"
-  function checkAnswer() {
-    const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
-    const correctAnswer = currentChallenge.answer.toLowerCase();
-  
-    if (userAnswer === correctAnswer) {
-      document.getElementById("result").textContent = `Correct! ${currentChallenge.explanation}`;
-    } else {
-      document.getElementById("result").textContent = `Wrong! Try again. The answer was ${currentChallenge.answer}. ${currentChallenge.explanation}`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM fully loaded, calling loadChallenge");
+  loadChallenge();
+  // Wyślij action.ready, gdy strona jest gotowa
+  window.parent.postMessage({ action: "ready" }, "*");
+  console.log("Sent action.ready to parent");
+
+  window.addEventListener("message", (event) => {
+    console.log("Received message from Farcaster:", event.data);
+    if (event.data && event.data.buttonIndex === 1) {
+      checkAnswer();
     }
-  }
-  
-  // Symulacja kliknięcia przycisku (Farcaster używa button:1)
-  document.addEventListener("DOMContentLoaded", () => {
-    loadChallenge(); // Załaduj pierwsze wyzwanie
-    // Farcaster wywołuje checkAnswer, gdy użytkownik kliknie "Check" w Frame
-    window.addEventListener("message", (event) => {
-      if (event.data && event.data.buttonIndex === 1) {
-        checkAnswer();
-      }
-    });
   });
+});
