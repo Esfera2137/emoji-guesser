@@ -7,22 +7,53 @@ const emojiChallenges = [
 let currentChallenge = null;
 
 function loadChallenge() {
+  console.log('loadChallenge() wywołana');
+  const emojisElement = document.getElementById("emojis");
+  const answerInput = document.getElementById("answer");
+  const resultElement = document.getElementById("result");
+
+  console.log('emojisElement:', emojisElement);
+  console.log('answerInput:', answerInput);
+  console.log('resultElement:', resultElement);
+
   const randomIndex = Math.floor(Math.random() * emojiChallenges.length);
   currentChallenge = emojiChallenges[randomIndex];
-  document.getElementById("emojis").textContent = currentChallenge.emojis;
-  document.getElementById("answer").value = "";
-  document.getElementById("result").textContent = "";
+
+  if (emojisElement) {
+    emojisElement.textContent = currentChallenge.emojis;
+  } else {
+    console.error('Element o id "emojis" nie został znaleziony!');
+  }
+
+  if (answerInput) {
+    answerInput.value = "";
+  } else {
+    console.error('Element o id "answer" nie został znaleziony!');
+  }
+
+  if (resultElement) {
+    resultElement.textContent = "";
+  } else {
+    console.error('Element o id "result" nie został znaleziony!');
+  }
+  console.log('loadChallenge() zakończona');
 }
 
 function checkAnswer() {
-  const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+  const answerInput = document.getElementById("answer");
+  const resultElement = document.getElementById("result");
+  const userAnswer = answerInput ? answerInput.value.trim().toLowerCase() : "";
   const correctAnswer = currentChallenge.answer.toLowerCase();
 
   if (userAnswer === correctAnswer) {
-    document.getElementById("result").textContent = `Correct! ${currentChallenge.explanation}`;
+    if (resultElement) {
+      resultElement.textContent = `Correct! ${currentChallenge.explanation}`;
+    }
     document.querySelector('meta[name="fc:frame:image"]').setAttribute("content", "https://i.imgur.com/8WqYg5f.jpg");
   } else {
-    document.getElementById("result").textContent = `Wrong! Try again. The answer was ${currentChallenge.answer}. ${currentChallenge.explanation}`;
+    if (resultElement) {
+      resultElement.textContent = `Wrong! Try again. The answer was ${currentChallenge.answer}. ${currentChallenge.explanation}`;
+    }
     document.querySelector('meta[name="fc:frame:image"]').setAttribute("content", "https://i.imgur.com/8WqYg5f.jpg");
   }
 }
